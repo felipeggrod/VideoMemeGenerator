@@ -1,5 +1,7 @@
 import {compose, createStore, combineReducers} from 'redux';
 
+
+
 export const TOGGLE_TITLE_COLOR = 'TOGGLE_TITLE_COLOR';
 
 export const toggleTitleColor = () => ({
@@ -7,10 +9,7 @@ export const toggleTitleColor = () => ({
 });
 
 
-const allStoreEnhancers = compose (
-    //adding this to use the Redux Devtools Extension on chrome
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+
 
 
 const defaultState = {
@@ -31,6 +30,12 @@ function memeState(state=defaultState, action ){
             return state;
     }
 }
+
+
+//adding this to use the Redux Devtools Extension on chrome
+const allStoreEnhancers = compose (
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const root = combineReducers({memeState})
 
