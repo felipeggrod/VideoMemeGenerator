@@ -1,25 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {PlayPause, Capture, InitEditorData} from '../actions/EditorActions'
+import {capture, changeText} from '../actions/EditorActions'
 
 var video;
 var canvas;
 
 var context;
-var memeText = '';
 
 
 class Editor extends React.Component {
 
     componentDidMount() {
-        this.props.onInitEditorData();
-
         video = document.getElementById("video"); 
         canvas = document.getElementById("canvas");
     }
 
     onPlayPause() { 
-        this.props.onPlayPause();
         if (video.paused) {
             video.play();
         } else {
@@ -35,16 +31,15 @@ class Editor extends React.Component {
             context.font = "30px Comic Sans MS";
             context.fillStyle = "white";
             context.textAlign = "center";
-            context.fillText(memeText, 256,256);
+            
+            context.fillText(this.props.memeText, context.canvas.width/2 , context.canvas.height/1.8);
 
             this.props.onCapture(canvas.toDataURL('image/jpeg', 1.0));
         //}
     }
 
     onChangeText(e) {
-        memeText = e.target.value
-        console.log(e.target.value)
-        
+        this.props.onChangeText(e.target.value);
     }
    
     render() {
@@ -66,14 +61,19 @@ class Editor extends React.Component {
                     type="video/webm"
                   />
                 </video>
+                <div id="overlay">{this.props.memeText}</div>
+
                 <label>
                   Meme text:
                   <input type="text" onChange={(e) => this.onChangeText(e)} placeholder="Something edgy..." />
                 </label>
 
                 <button onClick={(e) => this.onPlayPause(e)}> Play/Pause </button>
+                
                 <input type="button" value="Capture" onClick={(e) => this.onCapture(e)}/>
+                
                 <a href={this.props.imageUrl} download> Download </a>
+                
                 <canvas id="canvas" width="500" height="500" ></canvas>
             </>
         );
@@ -84,14 +84,14 @@ class Editor extends React.Component {
 
 const mapStateToProps = (state) => ({
     imageUrl: state.memeState.editor.imageUrl,
+    memeText: state.memeState.editor.memeText,
     titleColor: state.memeState.titleColor
 })
 
 
 const mapActionsToProps = {
-    onPlayPause: PlayPause,
-    onCapture: Capture,
-    onInitEditorData: InitEditorData
+    onCapture: capture,
+    onChangeText: changeText,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Editor);

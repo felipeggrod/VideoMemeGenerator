@@ -1,0 +1,15 @@
+#overlay {
+    position: absolute; 
+    top: 600px; 
+    color: #ff5555; 
+    text-align: center;
+    font-size: 20px;
+    background-color: rgba(221, 221, 221, 0.6);
+    width: 640px;
+    padding: 10px 0;
+    z-index: 2147483647;
+  }
+  
+  #video {
+    z-index: 1;
+  }

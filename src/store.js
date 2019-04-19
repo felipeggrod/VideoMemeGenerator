@@ -1,29 +1,10 @@
 import {compose, createStore, combineReducers} from 'redux';
+import {CAPTURE, CHANGE_TEXT} from './actions/EditorActions'
 
 
 //Actions
-export const TOGGLE_TITLE_COLOR = 'TOGGLE_TITLE_COLOR';
-export const toggleTitleColor = () => ({
-    type: TOGGLE_TITLE_COLOR
-});
 
-export const PLAY_PAUSE = 'PLAY_PAUSE';
-export const PlayPause = () => ({
-    type: PLAY_PAUSE
-});
 
-export const CAPTURE = 'CAPTURE';
-export const Capture = (imageUrl) => ({
-    type: CAPTURE,
-    payload: {
-        imageUrl: imageUrl
-    }
-});
-
-export const INIT_EDITOR_DATA = 'INIT_EDITOR_DATA';
-export const InitEditorData = () => ({
-    type: INIT_EDITOR_DATA
-});
 
 
 
@@ -32,12 +13,8 @@ const defaultState = {
     titleColor: 'primary',
     editor: {
         sourceVideoUrl: 'https://upload.wikimedia.org/wikipedia/en/transcoded/6/61/Old_Man_Drinking_a_Glass_of_Beer_%281897%29.webm/Old_Man_Drinking_a_Glass_of_Beer_%281897%29.webm.360p.webm',
-        videoElement: '',
-        videoState: '',
-        canvas: '',
-        context: '',
         imageUrl: '',
-        memeText: "Meme text init state",
+        memeText: "This is the meme text",
     }
 }
 
@@ -45,17 +22,6 @@ const defaultState = {
 function memeState(state=defaultState, action ){
     console.dir(state.editor)
     switch(action.type){
-        
-        case TOGGLE_TITLE_COLOR:
-            return {
-                ...state,
-                titleColor: state.titleColor === 'primary' ? 'secondary' : 'primary',
-            };
-
-        case PLAY_PAUSE:
-        
-            return state
-            
         
         case CAPTURE:
             return {
@@ -66,16 +32,16 @@ function memeState(state=defaultState, action ){
                 },
             };
 
-        case INIT_EDITOR_DATA:
+        case CHANGE_TEXT:
+            console.log('payload.memetext:' + action.payload.memeText);
             return {
                 ...state,
                 editor: { 
                     ...state.editor, 
-                    //video: document.getElementById("video"),
-                    //canvas: document.getElementById("canvas")
-                }
-                
+                    memeText: action.payload.memeText,
+                },
             };
+
 
         default:
             return state;
@@ -83,7 +49,7 @@ function memeState(state=defaultState, action ){
 }
 
 
-//This must be added to use the Redux Devtools Extension on Chrome
+//Added this to use the Redux Devtools Extension on Chrome
 const allStoreEnhancers = compose (
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );

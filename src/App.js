@@ -4,7 +4,6 @@ import { Route, Link, Switch, Redirect } from "react-router-dom";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import {toggleTitleColor} from './store';
 
 import Readme from './components/Readme';
 import Editor from './components/Editor';
@@ -49,16 +48,15 @@ const stp = (state) => ({
 })
 
 const dtp = (dispatch) => bindActionCreators( {
-  toggleTitleColor: () => toggleTitleColor()
 }, dispatch)
 
 class App extends Component {
   render() {
-    const { classes, titleColor, toggleTitleColor } = this.props;
+    const { classes, titleColor } = this.props;
     return (
       <div className={classes.App}>
         <header className="App-header">
-          <h1 onClick={toggleTitleColor} className={ classes[`title-${titleColor}`] }>Vintage Meme Machine</h1>
+          <h1 className={ classes[`title-${titleColor}`] }>Vintage Meme Machine</h1>
         </header>
         <main>
           <Switch>
