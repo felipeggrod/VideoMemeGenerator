@@ -34,7 +34,6 @@ function memeState(state=defaultState, action ){
             };
 
         case CHANGE_TEXT:
-            console.log('payload.memetext:' + action.payload.memeText);
             return {
                 ...state,
                 editor: { 

@@ -20,7 +20,8 @@ class Editor extends React.Component {
         } else {
             video.pause(); 
         }
-    } 
+    }
+
     onCapture() {
         canvas.getContext('2d').drawImage(video, 0, 0);
         
@@ -64,12 +65,16 @@ class Editor extends React.Component {
                   muted
                   loop
                 >
-                  <source
+                    <source
                     src={this.props.sourceVideoUrl}
                     type="video/webm"
-                  />
+                    />
                 </video>
+
                 <div id="overlay">{this.props.memeText}</div>
+
+
+
 
                 <label>
                     Meme text:
@@ -79,11 +84,10 @@ class Editor extends React.Component {
                 <label>
                     Custom video:
                     <input id="video_file" name="video_file" type="file" onChange = {(e) => this.onVideoFileSelect(e)} ></input>
-                    <form onSubmit={this.changeVideoUrl}>
-                        <label> Paste a Video URL </label>
-                        <input type="url" onChange = { (e) => this.onChangeVideoUrl(e)}/>
-                        <input type="submit" value="Submit" />
-                    </form>        
+                    
+                    <label> Paste a Video URL </label>
+                    <input type="url" onChange = { (e) => this.onChangeVideoUrl(e)} placeholder="Enter a video URL..."/>
+                           
                     
                 </label>
 
