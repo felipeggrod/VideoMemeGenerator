@@ -1,53 +1,44 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {PlayPause, Capture, InitEditorData} from '../actions/EditorActions'
 
-var myVideo;
+var video;
 var canvas;
 
-var ctx;
+var context;
 
-var imageUrl='';
 
-export default class Editor extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            imageUrl: ''
-        }
-    }
+class Editor extends React.Component {
 
     componentDidMount() {
-        console.log(myVideo)
-        myVideo = document.getElementById("video"); 
-        canvas = document.getElementById("c");
-        
-        
-        console.log(myVideo)
-        console.log(canvas)
+        this.props.onInitEditorData();
+
+        video = document.getElementById("video"); 
+        canvas = document.getElementById("canvas");
     }
 
-    playPause() { 
-        if (myVideo.paused) 
-            myVideo.play(); 
-        else 
-            myVideo.pause(); 
-            
-    } 
-    capture() {
-        
-        
-        if (myVideo.paused) {
-            canvas.getContext('2d').drawImage(myVideo, 0, 0);
-            
-            ctx = canvas.getContext('2d');
-            ctx.font = "30px Comic Sans MS";
-            ctx.fillStyle = "white";
-            ctx.textAlign = "center";
-            ctx.fillText("Helleo World", 256,256);
-
-            this.setState({imageUrl: canvas.toDataURL('image/jpeg', 1.0)})//.toString()
-            console.log(this.state.imageUrl);
-            //console.log(canvas.toDataURL())
+    onPlayPause() { 
+        this.props.onPlayPause();
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause(); 
         }
+    } 
+    onCapture() {
+
+        //if (video.paused) {
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            
+            context = canvas.getContext('2d');
+            context.font = "30px Comic Sans MS";
+            context.fillStyle = "white";
+            context.textAlign = "center";
+            context.fillText("Helleo World", 256,256);
+
+            this.props.onCapture(canvas.toDataURL('image/jpeg', 1.0));
+            console.log(this.props.imageUrl);
+        //}
     }
    
     render() {
@@ -74,12 +65,28 @@ export default class Editor extends React.Component {
                   <input type="text" placeholder="Something edgy..." />
                 </label>
 
-                <button onClick={(e) => this.playPause(e)}> Play/Pause </button>
-                <input type="button" value="Capture" onClick={(e) => this.capture(e)}/>
-                <a href={this.state.imageUrl.toString()} onClick = { (e) => console.log(imageUrl)} download> Download </a>
-                <canvas id="c" width="500" height="500" ></canvas>
+                <button onClick={(e) => this.onPlayPause(e)}> Play/Pause </button>
+                <input type="button" value="Capture" onClick={(e) => this.onCapture(e)}/>
+                <a href={this.props.imageUrl} download> Download </a>
+                <canvas id="canvas" width="500" height="500" ></canvas>
             </>
         );
     }
 }
+
+
+
+const mapStateToProps = (state) => ({
+    imageUrl: state.memeState.editor.imageUrl,
+    titleColor: state.memeState.titleColor
+})
+
+
+const mapActionsToProps = {
+    onPlayPause: PlayPause,
+    onCapture: Capture,
+    onInitEditorData: InitEditorData
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(Editor);
     
