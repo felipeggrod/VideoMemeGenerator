@@ -1,5 +1,5 @@
 import {compose, createStore, combineReducers} from 'redux';
-import {CAPTURE, CHANGE_TEXT} from './actions/EditorActions'
+import {CAPTURE, CHANGE_TEXT, CHANGE_VIDEO_URL} from './actions/EditorActions'
 
 
 //Actions
@@ -13,6 +13,7 @@ const defaultState = {
     titleColor: 'primary',
     editor: {
         sourceVideoUrl: 'https://upload.wikimedia.org/wikipedia/en/transcoded/6/61/Old_Man_Drinking_a_Glass_of_Beer_%281897%29.webm/Old_Man_Drinking_a_Glass_of_Beer_%281897%29.webm.360p.webm',
+        //sourceVideoUrl: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c7/Keystrokes_in_a_vintage_mechanical_calculator.webm/Keystrokes_in_a_vintage_mechanical_calculator.webm.360p.vp9.webm',
         imageUrl: '',
         memeText: "This is the meme text",
     }
@@ -42,6 +43,18 @@ function memeState(state=defaultState, action ){
                 },
             };
 
+        case CHANGE_VIDEO_URL:
+            if (action.payload.videoUrl instanceof Object) {
+                action.payload.videoUrl = URL.createObjectURL(action.payload.videoUrl);
+            }
+            
+            return {
+                ...state,
+                editor: { 
+                    ...state.editor, 
+                    sourceVideoUrl: action.payload.videoUrl,
+                },
+            };
 
         default:
             return state;

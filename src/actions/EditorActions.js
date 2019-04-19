@@ -13,3 +13,11 @@ export const changeText = (memeText) => ({
         memeText: memeText,
     }
 });
+
+export const CHANGE_VIDEO_URL = 'CHANGE_VIDEO_URL';
+export const changeVideoUrl = (videoUrl) => ({
+    type: CHANGE_VIDEO_URL,
+    payload: {
+        videoUrl: videoUrl,
+    }
+});

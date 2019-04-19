@@ -10,6 +10,6 @@
     z-index: 2147483647;
   }
   
-  #video {
-    z-index: 1;
-  }
+#video {
+z-index: 1;
+}
