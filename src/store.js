@@ -1,14 +1,29 @@
 import {compose, createStore, combineReducers} from 'redux';
-import {PLAY_PAUSE, CAPTURE, INIT_EDITOR_DATA} from './actions/EditorActions'
 
 
 //Actions
 export const TOGGLE_TITLE_COLOR = 'TOGGLE_TITLE_COLOR';
-
 export const toggleTitleColor = () => ({
     type: TOGGLE_TITLE_COLOR
 });
 
+export const PLAY_PAUSE = 'PLAY_PAUSE';
+export const PlayPause = () => ({
+    type: PLAY_PAUSE
+});
+
+export const CAPTURE = 'CAPTURE';
+export const Capture = (imageUrl) => ({
+    type: CAPTURE,
+    payload: {
+        imageUrl: imageUrl
+    }
+});
+
+export const INIT_EDITOR_DATA = 'INIT_EDITOR_DATA';
+export const InitEditorData = () => ({
+    type: INIT_EDITOR_DATA
+});
 
 
 
@@ -22,6 +37,7 @@ const defaultState = {
         canvas: '',
         context: '',
         imageUrl: '',
+        memeText: "Meme text init state",
     }
 }
 
@@ -42,11 +58,6 @@ function memeState(state=defaultState, action ){
             
         
         case CAPTURE:
-            console.log("capture")
-            console.log(action)
-            console.log(action.payload)
-            console.log(action.payload.imageUrl)
-            console.log('_____________________')
             return {
                 ...state,
                 editor: { 

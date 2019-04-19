@@ -6,6 +6,7 @@ var video;
 var canvas;
 
 var context;
+var memeText = '';
 
 
 class Editor extends React.Component {
@@ -34,11 +35,16 @@ class Editor extends React.Component {
             context.font = "30px Comic Sans MS";
             context.fillStyle = "white";
             context.textAlign = "center";
-            context.fillText("Helleo World", 256,256);
+            context.fillText(memeText, 256,256);
 
             this.props.onCapture(canvas.toDataURL('image/jpeg', 1.0));
-            console.log(this.props.imageUrl);
         //}
+    }
+
+    onChangeText(e) {
+        memeText = e.target.value
+        console.log(e.target.value)
+        
     }
    
     render() {
@@ -62,7 +68,7 @@ class Editor extends React.Component {
                 </video>
                 <label>
                   Meme text:
-                  <input type="text" placeholder="Something edgy..." />
+                  <input type="text" onChange={(e) => this.onChangeText(e)} placeholder="Something edgy..." />
                 </label>
 
                 <button onClick={(e) => this.onPlayPause(e)}> Play/Pause </button>
