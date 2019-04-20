@@ -11,7 +11,7 @@ const defaultState = {
         sourceVideoUrl: 'https://upload.wikimedia.org/wikipedia/en/transcoded/6/61/Old_Man_Drinking_a_Glass_of_Beer_%281897%29.webm/Old_Man_Drinking_a_Glass_of_Beer_%281897%29.webm.360p.webm',
         //sourceVideoUrl: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c7/Keystrokes_in_a_vintage_mechanical_calculator.webm/Keystrokes_in_a_vintage_mechanical_calculator.webm.360p.vp9.webm',
         imageUrl: '',
-        memeText: "This is the meme text",
+        memeText: "This is the meme's text",
     },
     textStyles: {
         color: 'white',

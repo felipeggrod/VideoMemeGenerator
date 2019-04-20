@@ -43,7 +43,7 @@ class Editor extends React.Component {
     render() {
         return (  
             <>
-                <div className='row position-relative'>
+                <div className='row position-relative d-flex justify-content-center border rounded border-secondary'>
                     <video 
                         className=''
                         crossOrigin="Anonymous"
@@ -69,9 +69,7 @@ class Editor extends React.Component {
                         color: this.props.textStyles.color,
                         font: this.props.textStyles.font,
                     
-                    }}>
-                        {this.props.memeText}
-                    </div>
+                    }}> {this.props.memeText} </div>
                     
                 </div>
 
@@ -88,17 +86,18 @@ class Editor extends React.Component {
                         <button className="btn btn-primary mx-2" > O </button>
                     </div>
                     <div className='m-auto col-6 col-sm-3'>
-                        <label className="text-white w-100">
-                            Custom video:
-                            <input className="file-input" id="video_file" name="video_file" type="file" onChange = {(e) => this.onVideoFileSelect(e)} ></input>
-                        </label>
-                    </div>
-                    <div className='m-auto col-6 col-sm-3'>
                         <label className="text-white w-100"> 
                             Paste a Video URL
                             <input className="form-control shadow " type="url" onChange = { (e) => this.onChangeVideoUrl(e)} placeholder="Enter a video URL..."/>
                         </label>
                     </div>
+                    <div className='m-auto col-6 col-sm-3'>
+                        <label className="text-white w-100">
+                            Custom video:
+                            <input className="file-input" id="video_file" name="video_file" type="file" onChange = {(e) => this.onVideoFileSelect(e)} ></input>
+                        </label>
+                    </div>
+                    
                 </div>
 
                 <div className='row section mt-2 p-2'>
@@ -111,7 +110,9 @@ class Editor extends React.Component {
                     </div> 
                 </div>
                 
-                <canvas className='row mt-2 p-2' id="canvas" width="500" height="500" ></canvas>
+                <div className='row section mt-2 p-2'>
+                    <canvas className=' ' id="canvas" width="500" height="400" ></canvas>
+                </div>
             </>
         );
     }

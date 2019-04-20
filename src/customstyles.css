@@ -4,7 +4,7 @@
     
     text-align: center;
     font-size: 20px;
-    background-color: rgba(224, 222, 22, 0.986);
+    background-color: rgba(224, 221, 22, 0);
     width: auto;
     margin: 110 auto;
     padding: 10px 0;
@@ -35,7 +35,7 @@ body {
 }
 
 .row  {
-  background-color: #2b2b2b;
+  /*background-color: #0000003d;
   border-radius: 5px;
   /*box-shadow: 0 .1rem .3rem rgba(0,0,0,.575)*/
 }
