@@ -3,15 +3,12 @@ import {connect} from 'react-redux';
 import {capture, changeText, changeVideoUrl} from '../actions/EditorActions'
 
 var video;
-var canvas;
-var context;
 
 
 class Editor extends React.Component {
 
     componentDidMount() {
-        video = document.getElementById("video"); 
-        canvas = document.getElementById("canvas");
+        video = document.getElementById("video");
     }
 
     onPlayPause() { 
@@ -23,16 +20,8 @@ class Editor extends React.Component {
     }
 
     onCapture() {
-        canvas.getContext('2d').drawImage(video, 0, 0);
         
-        context = canvas.getContext('2d');
-        context.font = "30px Comic Sans MS";
-        context.fillStyle = "white";
-        context.textAlign = "center";
-        
-        context.fillText(this.props.memeText, context.canvas.width/2 , context.canvas.height/1.8);
-
-        this.props.onCapture(canvas.toDataURL('image/jpeg', 1.0));
+        this.props.onCapture();
         
     }
 
@@ -54,9 +43,9 @@ class Editor extends React.Component {
     render() {
         return (  
             <>
-                <div className='row'>
+                <div className='row position-relative'>
                     <video 
-                        className='center border-danger'
+                        className=''
                         crossOrigin="Anonymous"
                         controls
                         id = "video"
@@ -72,24 +61,35 @@ class Editor extends React.Component {
                         src={this.props.sourceVideoUrl}
                         type="video/webm"
                         />
-                    </video>
 
-                    <div id="overlay">{this.props.memeText}</div>
+                        
+                        
+                    </video>
+                    <div id="overlay" style ={{
+                        color: this.props.textStyles.color,
+                        font: this.props.textStyles.font,
+                    
+                    }}>
+                        {this.props.memeText}
+                    </div>
+                    
                 </div>
 
 
 
-                <div className='row mt-2 p-2'>
+                <div className='row section mt-2 p-2'>
                     <div className='m-auto col-12 col-sm-6'>
-                        <label className="text-white w-100">
+                        <label className="text-white w-75">
                             Meme text:
                             <input className="form-control shadow" type="text" onChange={(e) => this.onChangeText(e)} placeholder="Something edgy..." />
+                            
+                        
                         </label>
+                        <button className="btn btn-primary mx-2" > O </button>
                     </div>
                     <div className='m-auto col-6 col-sm-3'>
                         <label className="text-white w-100">
                             Custom video:
-                            
                             <input className="file-input" id="video_file" name="video_file" type="file" onChange = {(e) => this.onVideoFileSelect(e)} ></input>
                         </label>
                     </div>
@@ -101,7 +101,7 @@ class Editor extends React.Component {
                     </div>
                 </div>
 
-                <div className='row mt-2 p-2'>
+                <div className='row section mt-2 p-2'>
                     <div className='column'>
                         <button className="btn btn-primary mx-2" onClick={(e) => this.onPlayPause(e)}> Play/Pause </button>
                         
@@ -111,7 +111,7 @@ class Editor extends React.Component {
                     </div> 
                 </div>
                 
-                <canvas className='row mt-2 p-2' id="canvas" width="200" height="200" ></canvas>
+                <canvas className='row mt-2 p-2' id="canvas" width="500" height="500" ></canvas>
             </>
         );
     }
@@ -123,6 +123,7 @@ const mapStateToProps = (state) => ({
     imageUrl: state.memeState.editor.imageUrl,
     memeText: state.memeState.editor.memeText,
     sourceVideoUrl: state.memeState.editor.sourceVideoUrl,
+    textStyles: state.memeState.textStyles,
     titleColor: state.memeState.titleColor
 })
 

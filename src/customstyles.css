@@ -1,11 +1,12 @@
 #overlay {
     position: absolute; 
-    top: 200px; 
-    color: #ff5555; 
+    bottom: 2rem;
+    
     text-align: center;
     font-size: 20px;
-    background-color: rgba(221, 221, 221, 0.6);
-    width: 640px;
+    background-color: rgba(224, 222, 22, 0.986);
+    width: auto;
+    margin: 110 auto;
     padding: 10px 0;
     z-index: 2147483647;
   }
@@ -14,6 +15,9 @@
 z-index: 1;
 }
 
+.position-relative {
+  position: relative;
+}
 
 body {
   background-color: #161616;
@@ -24,51 +28,24 @@ body {
   border-radius: 5px;
 }
 
-.row {
+.section  {
   background-color: #2b2b2b;
   border-radius: 5px;
+  box-shadow: 0 .16rem .4rem rgba(0,0,0,.575)
 }
 
-.row {
-  box-shadow: 0 .1rem .3rem rgba(0,0,0,.575)
+.row  {
+  background-color: #2b2b2b;
+  border-radius: 5px;
+  /*box-shadow: 0 .1rem .3rem rgba(0,0,0,.575)*/
 }
 
 .shadow {
-  box-shadow: 0 .1rem .3rem rgba(0,0,0,.575)
+  box-shadow: 0 .16rem .4rem rgba(0,0,0,.575)
 }
 
 .file-input {
-  color: red
+  /*color: red;
+  /*visibility: hidden;*/
 }
 
-/*
-.center {
-  margin: auto;
-  
-}
-
-.p-1 {
-  padding: 10px;
-}
-
-.p-2 {
-  padding: 20px;
-}
-
-.m-1 {
-  margin: 10px;
-}
-
-.m-2 {
-  margin: 20px;
-}
-
-.border {
-  border: 1px solid #6b6a6a80;
-  border-radius: 5px;
-}
-
-.maxw {
-  max-width: 100%;
-}
-*/

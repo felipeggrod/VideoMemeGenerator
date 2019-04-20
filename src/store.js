@@ -12,6 +12,10 @@ const defaultState = {
         //sourceVideoUrl: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c7/Keystrokes_in_a_vintage_mechanical_calculator.webm/Keystrokes_in_a_vintage_mechanical_calculator.webm.360p.vp9.webm',
         imageUrl: '',
         memeText: "This is the meme text",
+    },
+    textStyles: {
+        color: 'white',
+        font: "30px Comic Sans MS",
     }
 }
 
@@ -21,11 +25,25 @@ function memeState(state=defaultState, action ){
     switch(action.type){
         
         case CAPTURE:
+            let video = document.getElementById("video"); 
+            let canvas = document.getElementById("canvas");
+            let context = canvas.getContext('2d').drawImage(video, 0, 0);
+            
+            context = canvas.getContext('2d');
+            context.font = state.textStyles.font;
+            context.fillStyle = state.textStyles.color;
+            context.textAlign = "center";
+            
+            
+
+
+            context.fillText(state.editor.memeText, context.canvas.width/2 , context.canvas.height/1.67);
+
             return {
                 ...state,
                 editor: { 
                     ...state.editor, 
-                    imageUrl: action.payload.imageUrl,
+                    imageUrl: canvas.toDataURL('image/jpeg', 1.0),
                 },
             };
 
