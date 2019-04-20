@@ -4,44 +4,11 @@ import { Route, Link, Switch, Redirect } from "react-router-dom";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+import { styles } from './styles.js'
 
 import Readme from './components/Readme';
 import Editor from './components/Editor';
 
-
-
-const styles = theme => ({
-  '@global body': {
-    background: theme.palette.background,
-    color: theme.palette.text
-  },
-  App: {
-    padding: '20px',
-    background: 'black',
-    maxWidth: '800px',
-    minHeight: '600px',
-    margin: 'auto',
-    '&  h1': {
-      fontSize: '5rem',
-      textAlign: 'center',
-      fontFamily: 'serif',
-      cursor: 'pointer'
-    },
-    '& input': {
-      margin: '10px'
-    },
-    '& a': {
-      color: theme.palette.text,
-    }
-  },
-  'title-primary': {
-    color: theme.palette.primary
-  },
-  'title-secondary': {
-    color: theme.palette.secondary
-  },
-  
-});
 
 const stp = (state) => ({
   titleColor: state.memeState.titleColor
@@ -52,11 +19,12 @@ const dtp = (dispatch) => bindActionCreators( {
 
 class App extends Component {
   render() {
-    const { classes, titleColor } = this.props;
     return (
-      <div className={classes.App}>
-        <header className="App-header">
-          <h1 className={ classes[`title-${titleColor}`] }>Vintage Meme Machine</h1>
+      <div className="container">
+        <header className="row my-2">
+          <div className="col-12 m-4">
+            <h1 className="text-primary text-center">Vintage Meme Machine</h1>
+          </div>
         </header>
         <main>
           <Switch>
@@ -70,10 +38,10 @@ class App extends Component {
           </Switch>
         </main>
         <footer>
-          <nav>
-            <ul>
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/readme">Readme</Link></li>
+          <nav className="border-top" >
+            <ul className="nav justify-content-center">
+            <li className="nav-item nav-link"><Link to="/home">Home</Link></li>
+            <li className="nav-item nav-link"><Link to="/readme">Readme</Link></li>
             </ul>
           </nav>
         </footer>

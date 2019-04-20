@@ -1,6 +1,6 @@
 #overlay {
     position: absolute; 
-    top: 600px; 
+    top: 200px; 
     color: #ff5555; 
     text-align: center;
     font-size: 20px;
@@ -13,3 +13,62 @@
 #video {
 z-index: 1;
 }
+
+
+body {
+  background-color: #161616;
+}
+
+.container {
+  background-color: #58585800;
+  border-radius: 5px;
+}
+
+.row {
+  background-color: #2b2b2b;
+  border-radius: 5px;
+}
+
+.row {
+  box-shadow: 0 .1rem .3rem rgba(0,0,0,.575)
+}
+
+.shadow {
+  box-shadow: 0 .1rem .3rem rgba(0,0,0,.575)
+}
+
+.file-input {
+  color: red
+}
+
+/*
+.center {
+  margin: auto;
+  
+}
+
+.p-1 {
+  padding: 10px;
+}
+
+.p-2 {
+  padding: 20px;
+}
+
+.m-1 {
+  margin: 10px;
+}
+
+.m-2 {
+  margin: 20px;
+}
+
+.border {
+  border: 1px solid #6b6a6a80;
+  border-radius: 5px;
+}
+
+.maxw {
+  max-width: 100%;
+}
+*/

@@ -54,51 +54,64 @@ class Editor extends React.Component {
     render() {
         return (  
             <>
-                <video 
-                  crossOrigin="Anonymous"
-                  controls
-                  id = "video"
-                  width="800"
-                  height="450"
-                  playsInline                  
-                  autoPlay
-                  muted
-                  loop
-                >
-                    <source
-                    src={this.props.sourceVideoUrl}
-                    type="video/webm"
-                    />
-                </video>
+                <div className='row'>
+                    <video 
+                        className='center border-danger'
+                        crossOrigin="Anonymous"
+                        controls
+                        id = "video"
+                        width="100%"
+                        //height="450"
+                        playsInline                  
+                        autoPlay
+                        muted
+                        loop
+                    >
+                        <source
+                        className='center border'
+                        src={this.props.sourceVideoUrl}
+                        type="video/webm"
+                        />
+                    </video>
 
-                <div id="overlay">{this.props.memeText}</div>
+                    <div id="overlay">{this.props.memeText}</div>
+                </div>
 
 
 
+                <div className='row mt-2 p-2'>
+                    <div className='m-auto col-12 col-sm-6'>
+                        <label className="text-white w-100">
+                            Meme text:
+                            <input className="form-control shadow" type="text" onChange={(e) => this.onChangeText(e)} placeholder="Something edgy..." />
+                        </label>
+                    </div>
+                    <div className='m-auto col-6 col-sm-3'>
+                        <label className="text-white w-100">
+                            Custom video:
+                            
+                            <input className="file-input" id="video_file" name="video_file" type="file" onChange = {(e) => this.onVideoFileSelect(e)} ></input>
+                        </label>
+                    </div>
+                    <div className='m-auto col-6 col-sm-3'>
+                        <label className="text-white w-100"> 
+                            Paste a Video URL
+                            <input className="form-control shadow " type="url" onChange = { (e) => this.onChangeVideoUrl(e)} placeholder="Enter a video URL..."/>
+                        </label>
+                    </div>
+                </div>
 
-                <label>
-                    Meme text:
-                    <input type="text" onChange={(e) => this.onChangeText(e)} placeholder="Something edgy..." />
-                </label>
+                <div className='row mt-2 p-2'>
+                    <div className='column'>
+                        <button className="btn btn-primary mx-2" onClick={(e) => this.onPlayPause(e)}> Play/Pause </button>
+                        
+                        <button className="btn btn-primary mx-2" onClick={(e) => this.onCapture(e)}> Capture </button>
+                        
+                        <a className="btn btn-primary mx-2 " href={this.props.imageUrl} download> Download </a>
+                    </div> 
+                </div>
                 
-                <label>
-                    Custom video:
-                    <input id="video_file" name="video_file" type="file" onChange = {(e) => this.onVideoFileSelect(e)} ></input>
-                    
-                    <label> Paste a Video URL </label>
-                    <input type="url" onChange = { (e) => this.onChangeVideoUrl(e)} placeholder="Enter a video URL..."/>
-                           
-                    
-                </label>
-
-                <button onClick={(e) => this.onPlayPause(e)}> Play/Pause </button>
-                
-                <button onClick={(e) => this.onCapture(e)}> Capture </button>
-                
-                
-                <a href={this.props.imageUrl} download> Download </a>
-                
-                <canvas id="canvas" width="500" height="500" ></canvas>
+                <canvas className='row mt-2 p-2' id="canvas" width="200" height="200" ></canvas>
             </>
         );
     }

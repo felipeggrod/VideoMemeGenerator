@@ -2,10 +2,6 @@ import {compose, createStore, combineReducers} from 'redux';
 import {CAPTURE, CHANGE_TEXT, CHANGE_VIDEO_URL} from './actions/EditorActions'
 
 
-//Actions
-
-
-
 
 
 //State
