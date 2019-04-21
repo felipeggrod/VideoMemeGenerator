@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {capture, changeText, changeVideoUrl, changeFontFamily} from '../actions/EditorActions'
+import {capture, changeText, changeVideoUrl, changeFontFamily, changeShadows} from '../actions/EditorActions'
 
 var video;
 
@@ -11,6 +11,7 @@ class Editor extends React.Component {
         video = document.getElementById("video");
     }
 
+    //Video related
     onPlayPause() { 
         if (video.paused) {
             video.play();
@@ -23,10 +24,6 @@ class Editor extends React.Component {
         this.props.onCapture();
     }
 
-    onChangeText(e) {
-        this.props.onChangeText(e.target.value);
-    }
-    
     onVideoFileSelect(e) {
         this.props.onChangeVideoUrl(document.getElementById('video_file').files[0]);
         video.load();
@@ -38,8 +35,17 @@ class Editor extends React.Component {
         video.load();
     }
 
+    //Text related
+    onChangeText(e) {
+        this.props.onChangeText(e.target.value);
+    }
+
     onChangeFontFamily(e) {
         this.props.onChangeFontFamily(e.target.value);
+    }
+
+    onChangeShadows(e) {
+        this.props.onChangeShadows(e.target.value);
     }
 
     render() {
@@ -76,6 +82,7 @@ class Editor extends React.Component {
                         color: this.props.textStyles.color,
                         font: this.props.textStyles.font,
                         fontFamily: this.props.textStyles.fontFamily,
+                        textShadow: (this.props.textStyles.fontShadow ? '0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black' : '0 0 0 black'),
                     }}> {this.props.memeText} </div>
                     
                 </div>
@@ -108,15 +115,14 @@ class Editor extends React.Component {
 
                 <div className='row section mt-2 p-2'>
                     <div className='col-6 col-sm-6'>
-                        <label className="text-white w-25"> 
-                            
-                            <select className="btn btn-primary" onChange={(e) => this.onChangeFontFamily(e)}>
-                                {fontFamilyOptions}
-                            </select>
+                        <select className="btn btn-secondary m-2" onChange={(e) => this.onChangeFontFamily(e)}>
+                            {fontFamilyOptions}
+                        </select>
+                        <select className="btn btn-secondary m-2" onChange={(e) => this.onChangeShadows(e)}>
+                            <option value={false} > No Shadows</option>
+                            <option value={true} > Shadows</option>
+                        </select>
                         
-                        </label>
-                        <button className="btn btn-secondary m-2"> Font Settings </button>
-                        <button className="btn btn-secondary m-2"> Font Settings </button>
                         
                     </div>
                     <div className='col-6 col-sm-6'>
@@ -133,7 +139,7 @@ class Editor extends React.Component {
                     </div> 
                 </div>
                 
-                <div className='row section mt-2 p-2 d-flex justify-content-center'>
+                <div className='row mt-2 p-2 d-flex justify-content-center'>
                     <canvas className='col12' id="canvas" width="500" height="400" ></canvas>
                 </div>
             </>
@@ -157,6 +163,7 @@ const mapActionsToProps = {
     onChangeText: changeText,
     onChangeVideoUrl: changeVideoUrl,
     onChangeFontFamily: changeFontFamily,
+    onChangeShadows: changeShadows,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Editor);

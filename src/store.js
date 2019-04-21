@@ -1,5 +1,5 @@
 import {compose, createStore, combineReducers} from 'redux';
-import {CAPTURE, CHANGE_TEXT, CHANGE_VIDEO_URL, CHANGE_FONT_FAMILY} from './actions/EditorActions'
+import {CAPTURE, CHANGE_TEXT, CHANGE_VIDEO_URL, CHANGE_FONT_FAMILY, CHANGE_SHADOWS} from './actions/EditorActions'
 
 
 
@@ -16,7 +16,8 @@ const defaultState = {
         fontSize: '30px',
         fontSizeOptions: ['15px', '30px', '45px', '60px'],
         fontFamily: 'Comic Sans MS',
-        fontFamilyOptions: ['Comic Sans', 'Montserrat', 'Arial', 'Impact'],
+        fontFamilyOptions: ['Comic Sans MS', 'Montserrat', 'Arial', 'Impact'],
+        fontShadow: false,
         font: "30px Comic Sans MS",
         upperCased: false,
     }
@@ -34,10 +35,23 @@ function memeState(state=defaultState, action ){
             
             context = canvas.getContext('2d');
             
-            context.font = state.textStyles.fontSize + ' ' + state.textStyles.fontFamily;
-            context.fillStyle = state.textStyles.color;
-            context.textAlign = "center";
             
+            context.textAlign = "center";
+            context.font = state.textStyles.fontSize + ' ' + state.textStyles.fontFamily;
+            
+
+            //Drawing backshadows
+            if (state.textStyles.fontShadow) {
+                context.shadowColor="black";
+                context.shadowBlur=5;
+                context.lineWidth=5;
+                context.strokeStyle = "black";
+                context.strokeText(state.editor.memeText, context.canvas.width/2 , context.canvas.height/1.3);
+            }
+            
+            //Drawing main text
+            context.shadowBlur=0;
+            context.fillStyle = state.textStyles.color;
             context.fillText(state.editor.memeText, context.canvas.width/2 , context.canvas.height/1.3);
 
             return {
@@ -78,6 +92,18 @@ function memeState(state=defaultState, action ){
                     fontFamily: action.payload.fontFamily,
                 },
         };
+
+        case CHANGE_SHADOWS:
+            var fontShadow = (action.payload.fontShadow === "true");
+            return {
+                ...state,
+                textStyles: { 
+                    ...state.textStyles, 
+                    fontShadow: fontShadow,
+                },
+        };
+
+        
         default:
             return state;
     }

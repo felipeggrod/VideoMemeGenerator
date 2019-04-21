@@ -29,3 +29,11 @@ export const changeFontFamily = (fontFamily) => ({
         fontFamily: fontFamily,
     }
 });
+
+export const CHANGE_SHADOWS = 'CHANGE_SHADOWS';
+export const changeShadows = (fontShadow) => ({
+    type: CHANGE_SHADOWS,
+    payload: {
+        fontShadow: fontShadow,
+    }
+});
