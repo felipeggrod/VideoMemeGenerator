@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {capture, changeText, changeVideoUrl} from '../actions/EditorActions'
+import {capture, changeText, changeVideoUrl, changeFontFamily} from '../actions/EditorActions'
 
 var video;
 
@@ -20,9 +20,7 @@ class Editor extends React.Component {
     }
 
     onCapture() {
-        
         this.props.onCapture();
-        
     }
 
     onChangeText(e) {
@@ -40,7 +38,18 @@ class Editor extends React.Component {
         video.load();
     }
 
+    onChangeFontFamily(e) {
+        this.props.onChangeFontFamily(e.target.value);
+    }
+
     render() {
+        const fontFamilyOptions = this.props.textStyles.fontFamilyOptions.map((option) =>
+            <option
+                key={option}
+                value={option} 
+            > {option} </option>
+        );
+
         return (  
             <>
                 <div className='row position-relative d-flex justify-content-center border rounded border-secondary'>
@@ -62,13 +71,11 @@ class Editor extends React.Component {
                         type="video/webm"
                         />
 
-                        
-                        
                     </video>
                     <div id="overlay" style ={{
                         color: this.props.textStyles.color,
                         font: this.props.textStyles.font,
-                    
+                        fontFamily: this.props.textStyles.fontFamily,
                     }}> {this.props.memeText} </div>
                     
                 </div>
@@ -100,9 +107,19 @@ class Editor extends React.Component {
                 </div>
 
                 <div className='row section mt-2 p-2'>
-                    <div className='col-12 col-sm-12'>
-                     <button className="btn btn-primary m-2"> Font Settings  </button>
-
+                    <div className='col-6 col-sm-6'>
+                        <label className="text-white w-25"> 
+                            
+                            <select className="btn btn-primary" onChange={(e) => this.onChangeFontFamily(e)}>
+                                {fontFamilyOptions}
+                            </select>
+                        
+                        </label>
+                        <button className="btn btn-secondary m-2"> Font Settings </button>
+                        <button className="btn btn-secondary m-2"> Font Settings </button>
+                        
+                    </div>
+                    <div className='col-6 col-sm-6'>
                         <button className="btn btn-primary m-2" onClick={(e) => this.onPlayPause(e)}> Play/Pause </button>
                     
                         <button className="btn btn-primary m-2" onClick={(e) => this.onCapture(e)}> Capture </button>
@@ -116,8 +133,8 @@ class Editor extends React.Component {
                     </div> 
                 </div>
                 
-                <div className='row section mt-2 p-2'>
-                    <canvas className=' ' id="canvas" width="500" height="400" ></canvas>
+                <div className='row section mt-2 p-2 d-flex justify-content-center'>
+                    <canvas className='col12' id="canvas" width="500" height="400" ></canvas>
                 </div>
             </>
         );
@@ -139,6 +156,7 @@ const mapActionsToProps = {
     onCapture: capture,
     onChangeText: changeText,
     onChangeVideoUrl: changeVideoUrl,
+    onChangeFontFamily: changeFontFamily,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Editor);

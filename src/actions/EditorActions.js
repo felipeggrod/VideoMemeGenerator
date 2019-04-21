@@ -21,3 +21,11 @@ export const changeVideoUrl = (videoUrl) => ({
         videoUrl: videoUrl,
     }
 });
+
+export const CHANGE_FONT_FAMILY = 'CHANGE_FONT_FAMILY';
+export const changeFontFamily = (fontFamily) => ({
+    type: CHANGE_FONT_FAMILY,
+    payload: {
+        fontFamily: fontFamily,
+    }
+});

@@ -1,21 +1,24 @@
 import {compose, createStore, combineReducers} from 'redux';
-import {CAPTURE, CHANGE_TEXT, CHANGE_VIDEO_URL} from './actions/EditorActions'
+import {CAPTURE, CHANGE_TEXT, CHANGE_VIDEO_URL, CHANGE_FONT_FAMILY} from './actions/EditorActions'
 
 
 
 
 //State
 const defaultState = {
-    titleColor: 'primary',
     editor: {
         sourceVideoUrl: 'https://upload.wikimedia.org/wikipedia/en/transcoded/6/61/Old_Man_Drinking_a_Glass_of_Beer_%281897%29.webm/Old_Man_Drinking_a_Glass_of_Beer_%281897%29.webm.360p.webm',
-        //sourceVideoUrl: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/c/c7/Keystrokes_in_a_vintage_mechanical_calculator.webm/Keystrokes_in_a_vintage_mechanical_calculator.webm.360p.vp9.webm',
         imageUrl: '',
         memeText: "This is the meme's text",
     },
     textStyles: {
         color: 'white',
+        fontSize: '30px',
+        fontSizeOptions: ['15px', '30px', '45px', '60px'],
+        fontFamily: 'Comic Sans MS',
+        fontFamilyOptions: ['Comic Sans', 'Montserrat', 'Arial', 'Impact'],
         font: "30px Comic Sans MS",
+        upperCased: false,
     }
 }
 
@@ -30,7 +33,8 @@ function memeState(state=defaultState, action ){
             let context = canvas.getContext('2d').drawImage(video, 0, 0);
             
             context = canvas.getContext('2d');
-            context.font = state.textStyles.font;
+            
+            context.font = state.textStyles.fontSize + ' ' + state.textStyles.fontFamily;
             context.fillStyle = state.textStyles.color;
             context.textAlign = "center";
             
@@ -66,6 +70,14 @@ function memeState(state=defaultState, action ){
                 },
             };
 
+        case CHANGE_FONT_FAMILY:
+            return {
+                ...state,
+                textStyles: { 
+                    ...state.textStyles, 
+                    fontFamily: action.payload.fontFamily,
+                },
+        };
         default:
             return state;
     }
