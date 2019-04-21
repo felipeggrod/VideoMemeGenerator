@@ -1,5 +1,6 @@
 {
   "name": "dev-test-2019-starter",
+  "homepage": "http://feliperodrigues.online/vintagemememachine",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
