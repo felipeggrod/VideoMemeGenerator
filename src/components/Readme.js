@@ -3,7 +3,7 @@ import React from 'react';
 export default class Readme extends React.Component {
     render() {
         return (  
-            <section>
+            <section className="text-white">
                 <h2>Devtest Readme</h2>
                 <p>
                     Hello candidate, Welcome to our little dev test. The goal of

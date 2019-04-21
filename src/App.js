@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div className="container">
         <header className="row my-2">
-          <div className="col-12 m-4">
+          <div className="col-12 m-auto mt-4 p-4">
             <h1 className="text-primary text-center">Vintage Meme Machine</h1>
           </div>
         </header>

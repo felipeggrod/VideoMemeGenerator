@@ -34,10 +34,7 @@ function memeState(state=defaultState, action ){
             context.fillStyle = state.textStyles.color;
             context.textAlign = "center";
             
-            
-
-
-            context.fillText(state.editor.memeText, context.canvas.width/2 , context.canvas.height/1.67);
+            context.fillText(state.editor.memeText, context.canvas.width/2 , context.canvas.height/1.3);
 
             return {
                 ...state,

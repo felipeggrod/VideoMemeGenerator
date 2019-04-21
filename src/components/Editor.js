@@ -77,36 +77,42 @@ class Editor extends React.Component {
 
                 <div className='row section mt-2 p-2'>
                     <div className='m-auto col-12 col-sm-6'>
-                        <label className="text-white w-75">
+                        <label className="text-white w-100">
                             Meme text:
                             <input className="form-control shadow" type="text" onChange={(e) => this.onChangeText(e)} placeholder="Something edgy..." />
                             
                         
                         </label>
-                        <button className="btn btn-primary mx-2" > O </button>
                     </div>
                     <div className='m-auto col-6 col-sm-3'>
                         <label className="text-white w-100"> 
-                            Paste a Video URL
+                            Video URL:
                             <input className="form-control shadow " type="url" onChange = { (e) => this.onChangeVideoUrl(e)} placeholder="Enter a video URL..."/>
                         </label>
                     </div>
                     <div className='m-auto col-6 col-sm-3'>
                         <label className="text-white w-100">
                             Custom video:
-                            <input className="file-input" id="video_file" name="video_file" type="file" onChange = {(e) => this.onVideoFileSelect(e)} ></input>
+                            <input className="form-control shadow file-input" id="video_file" name="video_file" type="file" onChange = {(e) => this.onVideoFileSelect(e)} ></input>
                         </label>
                     </div>
                     
                 </div>
 
                 <div className='row section mt-2 p-2'>
-                    <div className='column'>
-                        <button className="btn btn-primary mx-2" onClick={(e) => this.onPlayPause(e)}> Play/Pause </button>
+                    <div className='col-12 col-sm-12'>
+                     <button className="btn btn-primary m-2"> Font Settings  </button>
+
+                        <button className="btn btn-primary m-2" onClick={(e) => this.onPlayPause(e)}> Play/Pause </button>
+                    
+                        <button className="btn btn-primary m-2" onClick={(e) => this.onCapture(e)}> Capture </button>
                         
-                        <button className="btn btn-primary mx-2" onClick={(e) => this.onCapture(e)}> Capture </button>
+                        {this.props.imageUrl === '' ? (
+                            <div/>
+                        ) : (
+                            <a className="btn btn-success m-2 " href={this.props.imageUrl} download> Download </a>
+                        )}
                         
-                        <a className="btn btn-primary mx-2 " href={this.props.imageUrl} download> Download </a>
                     </div> 
                 </div>
                 

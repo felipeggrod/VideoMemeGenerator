@@ -44,8 +44,31 @@ body {
   box-shadow: 0 .16rem .4rem rgba(0,0,0,.575)
 }
 
+
+/*
+.btn-primary{
+  color: lightYellow ;
+  background-color: #d5a722;
+  border-color: rgba(255, 0, 0, 0);
+}
+
+.btn-primary:focus, .btn-primary:hover{
+  cursor: pointer;
+  color:  #d5a722;
+  background-color: rgb(22, 22, 22);
+  border-color: rgba(255, 0, 0, 0);
+}
+
+
+a {
+  color:  #d5a722;
+}
+
+a:hover{
+  color: lightYellow ;
+}
+*/
 .file-input {
-  /*color: red;
-  /*visibility: hidden;*/
+  font-size: .71rem;
 }
 
