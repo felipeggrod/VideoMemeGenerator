@@ -18,7 +18,6 @@ const defaultState = {
         fontFamily: 'Comic Sans MS',
         fontFamilyOptions: ['Comic Sans MS', 'Montserrat', 'Arial', 'Impact'],
         fontShadow: false,
-        font: "30px Comic Sans MS",
         upperCased: false,
     }
 }
