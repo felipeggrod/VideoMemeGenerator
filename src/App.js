@@ -40,8 +40,8 @@ class App extends Component {
         <footer>
           <nav className="border-top" >
             <ul className="nav justify-content-center">
-            <li className="nav-item nav-link"><Link to="/home">Home</Link></li>
-            <li className="nav-item nav-link"><Link to="/readme">Readme</Link></li>
+            <li className="nav-item nav-link"><Link to="/vintagemememachine/home">Home</Link></li>
+            <li className="nav-item nav-link"><Link to="/vintagemememachine/readme">Readme</Link></li>
             </ul>
           </nav>
         </footer>

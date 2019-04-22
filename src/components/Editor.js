@@ -80,7 +80,7 @@ class Editor extends React.Component {
                     </video>
                     <div id="overlay" style ={{
                         color: this.props.textStyles.color,
-                        font: this.props.textStyles.font,
+                        fontSize: this.props.textStyles.fontSize,
                         fontFamily: this.props.textStyles.fontFamily,
                         textShadow: (this.props.textStyles.fontShadow ? '0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black, 0px 0px 5px black' : '0 0 0 black'),
                     }}> {this.props.memeText} </div>
@@ -100,13 +100,13 @@ class Editor extends React.Component {
                     </div>
                     <div className='m-auto col-6 col-sm-3'>
                         <label className="text-white w-100"> 
-                            Video URL:
+                            Video URL(.webm):
                             <input className="form-control shadow " type="url" onChange = { (e) => this.onChangeVideoUrl(e)} placeholder="Enter a video URL..."/>
                         </label>
                     </div>
                     <div className='m-auto col-6 col-sm-3'>
                         <label className="text-white w-100">
-                            Custom video:
+                            Custom video(.webm):
                             <input className="form-control shadow file-input" id="video_file" name="video_file" type="file" onChange = {(e) => this.onVideoFileSelect(e)} ></input>
                         </label>
                     </div>
