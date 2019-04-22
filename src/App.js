@@ -23,18 +23,18 @@ class App extends Component {
       <div className="container">
         <header className="row my-2">
           <div className="col-12 m-auto mt-4 p-4">
-            <h1 className="text-primary text-center">Vintage Meme Machine</h1>
+            <h1 className="text-logo text-center ">Vintage<br/> Meme<br/> Machine</h1>
           </div>
         </header>
         <main>
           <Switch>
-            <Route path="/home">
+            <Route path="/vintagemememachine/home">
               <Editor/>
             </Route>
-            <Route path="/readme">
+            <Route path="/vintagemememachine/readme">
               <Readme/>
             </Route>
-            <Redirect to="/home" />
+            <Redirect to="/vintagemememachine/home" />
           </Switch>
         </main>
         <footer>
