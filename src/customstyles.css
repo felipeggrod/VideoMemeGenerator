@@ -44,8 +44,23 @@ body {
   box-shadow: 0 .16rem .4rem rgba(0,0,0,.575)
 }
 
+.text-logo {
+  font-size: 4rem;
+  font-family: 'Montserrat';
+  background: white;
+  background: -webkit-linear-gradient(90deg, #9b1e5a 0%, #e97424 50%, #73fffd 95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
 
 /*
+
+text-shadow: 0 .16rem .4rem rgba(0,0,0,1.575);
+#9b1e5a #e97424 #7fcbca
+
 .btn-primary{
   color: lightYellow ;
   background-color: #d5a722;
