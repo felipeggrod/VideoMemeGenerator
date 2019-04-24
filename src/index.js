@@ -5,20 +5,16 @@ import "./bootstrap.min.css";
 import "./customstyles.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { ThemeProvider } from "react-jss";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import {store} from './store'; 
-import {theme} from './theme'; 
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
+  <Provider store={store} context={React.createContext()}>
+    <BrowserRouter>
         <App />
-      </ThemeProvider>
-    </Provider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 

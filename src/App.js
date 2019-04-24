@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import injectSheet from "react-jss";
 import { Route, Link, Switch, Redirect } from "react-router-dom";
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { styles } from './styles.js'
 
 import Readme from './components/Readme';
 import Editor from './components/Editor';
@@ -50,4 +48,4 @@ class App extends Component {
   }
 }
 
-export default connect(stp,dtp)(injectSheet(styles)(App));
+export default connect(stp,dtp)(App);
