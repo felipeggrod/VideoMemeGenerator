@@ -21,25 +21,25 @@ class App extends Component {
       <div className="container">
         <header className="row my-2">
           <div className="col-12 m-auto mt-4 p-4">
-            <h1 className="text-logo text-center ">Vintage<br/> Meme<br/> Machine</h1>
+            <h1 className="text-logo text-center ">Video<br/> Meme<br/> Generator</h1>
           </div>
         </header>
         <main>
           <Switch>
-            <Route path="/vintagemememachine/home">
+            <Route path="/videomemegenerator/home">
               <Editor/>
             </Route>
-            <Route path="/vintagemememachine/readme">
+            <Route path="/videomemegenerator/readme">
               <Readme/>
             </Route>
-            <Redirect to="/vintagemememachine/home" />
+            <Redirect to="/videomemegenerator/home" />
           </Switch>
         </main>
         <footer>
           <nav className="border-top" >
             <ul className="nav justify-content-center">
-            <li className="nav-item nav-link"><Link to="/vintagemememachine/home">Home</Link></li>
-            <li className="nav-item nav-link"><Link to="/vintagemememachine/readme">Readme</Link></li>
+            <li className="nav-item nav-link"><Link to="/videomemegenerator/home">Home</Link></li>
+            <li className="nav-item nav-link"><Link to="/videomemegenerator/readme">Readme</Link></li>
             </ul>
           </nav>
         </footer>

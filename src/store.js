@@ -15,9 +15,9 @@ const defaultState = {
         color: 'white',
         fontSize: '30px',
         fontSizeOptions: ['15px', '30px', '45px', '60px'],
-        fontFamily: 'Comic Sans MS',
+        fontFamily: 'Impact',
         fontFamilyOptions: ['Comic Sans MS', 'Montserrat', 'Arial', 'Impact'],
-        fontShadow: false,
+        fontShadow: true,
         upperCased: false,
     }
 }

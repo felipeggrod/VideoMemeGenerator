@@ -4,56 +4,24 @@ export default class Readme extends React.Component {
     render() {
         return (  
             <section className="text-white">
-                <h2>Devtest Readme</h2>
+                <h2>Video Meme Generator</h2>
                 <p>
-                    Hello candidate, Welcome to our little dev test. The goal of
-                    this exercise, is to asses your general skill level, and give
-                    us something to talk about at our next appointment.
+                    Welcome to the <em>Video Meme Generator</em>. This is a little tool that helps you create edgy memes from videos.
                 </p>
                 <section>
-                    <h3>What this app should do</h3>
-                    <p>
-                    We'd like for you to build a tiny app called the "Vintage Meme
-                    Machine". It will be a tool that allows users to overlay text
-                    on a video, and capture or share it.
-                    </p>
-                    <p>These are the basic requirements:</p>
+                    <p>You can:</p>
                     <ul>
-                    <li>User can pick a point in the video</li>
+                    <li>Pick any point in the video to create your meme</li>
                     <li>
-                        User can enter text that is placed over the video <em>still</em>
+                        Change the text effects/styling and see the changes live
                     </li>
                     <li>
-                        User can save this personalized content for later use
+                        Capture the meme and download it to your computer
+                    </li>
+                    <li>
+                        Provide any custom video you'd like. From url or file, as long as it is a .webm
                     </li>
                     </ul>
-                </section>
-                <section>
-                    <h3>What we want you to do</h3>
-                    <p>
-                    Off course we don't expect you to build a full fledged app
-                    in such a short time frame.
-                    </p>
-                    <p>
-                    But we would like for you to get in the basic requirements,
-                    in one form or another. Beyond that feel free to show off
-                    your strenghts as a frontend developer.
-                    </p>
-                    <p>Some ideas:</p>
-                    <ul>
-                    <li>Make it look really nice</li>
-                    <li>Allow users to provide a custom video</li>
-                    <li>Download the meme as an image file</li>
-                    <li>Add fancy text effects to the text overlay</li>
-                    <li>Push the resulting meme to a social media API</li>
-                    </ul>
-                </section>
-                <section>
-                    <p>
-                    P.s. We've already added some libraries to make your life
-                    easier (Redux, Jss, React Router), but feel free to add
-                    more.
-                    </p>
                 </section>
             </section>
         );
