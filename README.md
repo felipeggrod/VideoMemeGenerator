@@ -2,4 +2,4 @@
 
 # Video Meme Generator
 
-This is a simple app that generates memes from videos
+A simple app that generates memes from videos. Made with React.js
